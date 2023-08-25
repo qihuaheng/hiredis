@@ -475,8 +475,8 @@ void appOnConnect(redisAsyncContext *c, int status)
         appData->connected = 0;
         appData->err = c->err;
         appData->context = NULL; /* avoid stale pointer when callback returns */
+        appAttemptReconnect();
     }
-    appAttemptReconnect();
 }
 
 void appOnDisconnect(redisAsyncContext *c, int status)
